@@ -39,7 +39,7 @@ int sizeLL(struct Member *h)
             count++;
             temp = temp->next;
         }
-        return count;
+            return count;
     }
 }
 
@@ -68,7 +68,6 @@ void insertFirst(struct Member **h,char name[20],int netWorth)
     temp -> netWorth = netWorth;
     temp -> next = *h;
     *h = temp;
-
 }
 
 //Insert node any Position
@@ -89,15 +88,13 @@ void insertNode(struct Member **h,char name[],int netWorth,int N)
         newN->next = *h;
         *h = newN;
     }
-
     else
     {
         for(int i=1; i<=N-2; i++)
             temp = temp->next;
     }
-
-    newN->next = temp->next;
-    temp->next = newN;
+        newN->next = temp->next;
+        temp->next = newN;
 }
 
 //Delete First
@@ -109,11 +106,9 @@ void deleteFirst(struct Member **h)
     else
     {
         struct Member *temp ;
-        //while(temp != NULL)
             temp = *h;
             *h = temp -> next;
             free(temp);
-
     }
 
 }
@@ -135,11 +130,11 @@ void deleteNode(struct Member **h,int N)
         for(int i=1; i<=N; i++)
         {
             temp = temp->next;
-            }
+        }
 
-        temp = temp->next;
-        temp->next = temp2->next;
-        free(temp2);
+            temp = temp->next;
+            temp->next = temp2->next;
+            free(temp2);
     }
 }
 
@@ -194,7 +189,7 @@ int main()
             if(search==1)
                 printf("\nNet Worth not found\n");
             else
-                printf("\nFound %d\n",search);
+                printf("\nDetails of Shafat Found %d\n",search);
         break;
 
         case 4 :
