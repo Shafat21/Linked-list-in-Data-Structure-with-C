@@ -9,28 +9,28 @@ struct Member{
     struct Member *next;
 };
 
-//display()
+//Display()
 void displayLL(struct Member *h)
 {
     if(h==NULL)
-        printf("List is empty");
+        printf("\nList is empty\n");
     else
     {
         struct Member *temp = h;
         while(temp != NULL)
         {
-            printf("%s's Net Worth is %d million\n",temp->name,temp->netWorth);
+            printf("\n%s's Net Worth is %d\n",temp->name,temp->netWorth);
             temp = temp->next;
         }
     }
 }
 
-//size()
+//Size()
 int sizeLL(struct Member *h)
 {
     int count = 0;
     if(h==NULL)
-        printf("List is empty");
+        printf("\nList is empty\n");
     else
     {
         struct Member *temp = h;
@@ -43,7 +43,7 @@ int sizeLL(struct Member *h)
     }
 }
 
-//search()                     //change it
+//Search()
 int searchLL(struct Member *h,char name[])
 {
     struct Member *temp = h;
@@ -58,7 +58,7 @@ int searchLL(struct Member *h,char name[])
 
 }
 
-//inserting a new node at first
+//Inserting First
 void insertFirst(struct Member **h,char name[20],int netWorth)
 {
     struct Member *temp;
@@ -71,25 +71,7 @@ void insertFirst(struct Member **h,char name[20],int netWorth)
 
 }
 
-//delete node at first
-void deleteFirst(struct Member **h)
-{
-    if(*h==NULL)
-        printf("List is empty");
-
-    else
-    {
-        struct Member *temp ;
-        //while(temp != NULL)
-            temp = *h;
-            *h = temp -> next;
-            free(temp);
-
-    }
-
-}
-
-//insert node anywhere
+//Insert node any Position
 void insertNode(struct Member **h,char name[],int netWorth,int N)
 {
     struct Member *temp = *h,*newN;
@@ -117,13 +99,32 @@ void insertNode(struct Member **h,char name[],int netWorth,int N)
     newN->next = temp->next;
     temp->next = newN;
 }
-//delete any node
+
+//Delete First
+void deleteFirst(struct Member **h)
+{
+    if(*h==NULL)
+        printf("\nList is empty\n");
+
+    else
+    {
+        struct Member *temp ;
+        //while(temp != NULL)
+            temp = *h;
+            *h = temp -> next;
+            free(temp);
+
+    }
+
+}
+
+//Delete node any Position
 void deleteNode(struct Member **h,int N)
 {
     struct Member *temp = *h,*temp2;
 
     if(*h==NULL)
-        printf("List is empty");
+        printf("\nList is empty\n");
     else if(N==1)
     {
         *h = (*h)->next;
@@ -144,25 +145,34 @@ void deleteNode(struct Member **h,int N)
 
 int main()
 {
-    struct Member a,b,c,*head;
+    struct Member a,b,c,d,e,*head;
     head = &a;
     strcpy(a.name,"Shafat");
-    a.netWorth = 22500000;
+    a.netWorth = 10;
     a.next = &b;
 
     strcpy(b.name,"Ove");
-    b.netWorth = 20000000;
+    b.netWorth = 20;
     b.next = &c;
 
     strcpy(c.name,"Momo");
-    c.netWorth = 25000000;
-    c.next = NULL;
+    c.netWorth = 30;
+    c.next = &d;
+
+    strcpy(d.name,"Marjana");
+    d.netWorth = 40;
+    d.next = &e;
+
+    strcpy(e.name,"Sadia");
+    e.netWorth = 50;
+    e.next = NULL;
 
     int choice,size,search;
+    system("cls");
     while(1)
     {
         printf("\n****** MENU ******\n");
-        printf("1. Display Linked List\n2. Size of All Linked List\n3. Search Linked List\n4. Insert First\n5. Delete First\n6. Insert Node\n7. Delete Node\n8. Exit System\n");
+        printf("1. Display Linked List\n2. Size of All Linked List\n3. Search Linked List\n4. Insert First\n5. Delete First\n6. Insert Node\n7. Delete Node\n8. Insert Last\n9. Delete Last\n10. Exit System\n");
         printf("Enter your choice: ");
 
         scanf("%d",&choice);
@@ -188,7 +198,7 @@ int main()
         break;
 
         case 4 :
-            insertFirst(&head,"Ove",20000000);
+            insertFirst(&head,"Ove",60);
             displayLL(head);
         break;
 
@@ -198,7 +208,7 @@ int main()
         break;
 
         case 6 :
-            insertNode(&head,"Marjana",20000000,1);
+            insertNode(&head,"Marjana",70,1);
             displayLL(head);
         break;
 
@@ -208,11 +218,19 @@ int main()
         break;
 
         case 8 :
+            printf("\nInsert Last : Couldn't Do it\n");
+        break;
+
+        case 9 :
+            printf("\nDelete Last : Couldn't Do it\n");
+        break;
+
+        case 10 :
             exit(0);
         break;
 
         default :
-            printf("Invalid Input");
+            printf("\nWrong selection!!! Please try again!!!\n");
         }
     }
 }
